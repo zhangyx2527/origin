@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: origin-service-auth
+  profiles:
+    active: dev
+  mvc:
+    pathmatch:
+      # 配置策略
+      matching-strategy: ant-path-matcher
+
+server:
+  port: 9202
+
+
+logging:
+  level:
+    com.origin: debug
+    org.springframework.cloud.openfeign: debug

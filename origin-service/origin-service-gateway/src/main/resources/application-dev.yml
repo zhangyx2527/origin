@@ -1,0 +1,21 @@
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 10.211.55.33:8848
+    gateway:
+      routes:
+        - id: auth_route_swagger
+          uri: lb://origin-service-auth
+          predicates:
+            - Path=/auth/v2/api-docs
+          filters:
+            - StripPrefix=1
+
+        - id: auth_route
+          uri: lb://origin-service-auth
+          predicates:
+            - Path=/auth/**
+          filters:
+            - StripPrefix=0
+
